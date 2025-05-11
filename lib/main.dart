@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:state_managment_sample/counter_notifier.dart';
 import 'package:state_managment_sample/home_screen.dart';
 
 void main() {
@@ -10,10 +12,13 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       home: Scaffold(
         body: Center(
-          child: HomeScreen(),
+          child: ChangeNotifierProvider<CounterNotifier>(
+            create: (context) => CounterNotifier(),
+            child: const HomeScreen(),
+          )
         ),
       ),
     );
