@@ -1,22 +1,26 @@
-
 import 'package:flutter/material.dart';
 import 'package:state_managment_sample/counter.dart';
+import 'package:state_managment_sample/counter_notifier.dart';
 
 class HomeScreen extends StatelessWidget {
+  HomeScreen({super.key});
 
-  const HomeScreen({super.key});
-
-  final int count = 0;
+  final counterListenable = CounterNotifier();
 
   @override
   Widget build(BuildContext context) {
     return Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Counter( couterValue: count,),
+        ListenableBuilder(
+            listenable: counterListenable,
+            builder: (context, child) {
+              return Counter(couterValue: counterListenable.count);
+            }),
         ElevatedButton(
           onPressed: () {
             // Increment the counter value
+            counterListenable.increment();
           },
           child: const Text('Increment'),
         ),
