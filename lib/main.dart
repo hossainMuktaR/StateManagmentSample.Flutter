@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:state_managment_sample/home_screen.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(const GetMaterialApp(
+    home: MainApp(),
+  ));
 }
 
 class MainApp extends StatelessWidget {
@@ -10,11 +13,9 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: HomeScreen(),
-        ),
+    return const Scaffold(
+      body: Center(
+        child: HomeScreen(),
       ),
     );
   }
